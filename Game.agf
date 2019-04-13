@@ -46,14 +46,14 @@
       <DialogOptionsGap>0</DialogOptionsGap>
       <DialogOptionsBullet>0</DialogOptionsBullet>
       <SkipSpeech>MouseOrKeyboardOrTimer</SkipSpeech>
-      <SpeechStyle>Lucasarts</SpeechStyle>
+      <SpeechStyle>SierraTransparent</SpeechStyle>
       <UseGlobalSpeechAnimationDelay>False</UseGlobalSpeechAnimationDelay>
       <GlobalSpeechAnimationDelay>5</GlobalSpeechAnimationDelay>
       <LegacySpeechAnimationSpeed>False</LegacySpeechAnimationSpeed>
       <NumberDialogOptions>None</NumberDialogOptions>
       <DialogOptionsBackwards>False</DialogOptionsBackwards>
       <SpeechPortraitSide>Left</SpeechPortraitSide>
-      <TextWindowGUI>5</TextWindowGUI>
+      <TextWindowGUI>0</TextWindowGUI>
       <AlwaysDisplayTextAsSpeech>False</AlwaysDisplayTextAsSpeech>
       <FontsForHiRes>False</FontsForHiRes>
       <AntiAliasFonts>False</AntiAliasFonts>
@@ -2077,6 +2077,24 @@
               <Event Index="4" />
             </Interactions>
           </InventoryItem>
+          <InventoryItem>
+            <ID>12</ID>
+            <HotspotX>15</HotspotX>
+            <HotspotY>15</HotspotY>
+            <PlayerStartsWithItem>False</PlayerStartsWithItem>
+            <CursorImage>48</CursorImage>
+            <Image>48</Image>
+            <Description xml:space="preserve">Raposinha do Sensei</Description>
+            <Name>iRaposa</Name>
+            <Properties />
+            <Interactions>
+              <Event Index="0" />
+              <Event Index="1" />
+              <Event Index="2" />
+              <Event Index="3" />
+              <Event Index="4" />
+            </Interactions>
+          </InventoryItem>
         </InventoryItems>
       </InventoryItemFolder>
     </InventoryItems>
@@ -2257,9 +2275,9 @@
             <IdleView>7</IdleView>
             <ThinkingView>7</ThinkingView>
             <BlinkingView>7</BlinkingView>
-            <StartingRoom>1</StartingRoom>
-            <StartX>12</StartX>
-            <StartY>142</StartY>
+            <StartingRoom>7</StartingRoom>
+            <StartX>113</StartX>
+            <StartY>109</StartY>
             <UniformMovementSpeed>True</UniformMovementSpeed>
             <MovementSpeed>7</MovementSpeed>
             <MovementSpeedX>3</MovementSpeedX>
@@ -2337,9 +2355,9 @@
             <IdleView>6</IdleView>
             <ThinkingView>6</ThinkingView>
             <BlinkingView>6</BlinkingView>
-            <StartingRoom>6</StartingRoom>
-            <StartX>195</StartX>
-            <StartY>99</StartY>
+            <StartingRoom>2</StartingRoom>
+            <StartX>291</StartX>
+            <StartY>121</StartY>
             <UniformMovementSpeed>True</UniformMovementSpeed>
             <MovementSpeed>3</MovementSpeed>
             <MovementSpeedX>0</MovementSpeedX>
@@ -2408,6 +2426,46 @@
               <Event Index="7" />
             </Interactions>
           </Character>
+          <Character>
+            <ID>4</ID>
+            <ScriptName>cRaposinha</ScriptName>
+            <RealName>Raposinha</RealName>
+            <NormalView>8</NormalView>
+            <SpeechView>9</SpeechView>
+            <IdleView>9</IdleView>
+            <ThinkingView>9</ThinkingView>
+            <BlinkingView>9</BlinkingView>
+            <StartingRoom>7</StartingRoom>
+            <StartX>122</StartX>
+            <StartY>145</StartY>
+            <UniformMovementSpeed>True</UniformMovementSpeed>
+            <MovementSpeed>3</MovementSpeed>
+            <MovementSpeedX>0</MovementSpeedX>
+            <MovementSpeedY>0</MovementSpeedY>
+            <AnimationDelay>4</AnimationDelay>
+            <SpeechAnimationDelay>9</SpeechAnimationDelay>
+            <SpeechColor>12</SpeechColor>
+            <Solid>True</Solid>
+            <Clickable>True</Clickable>
+            <UseRoomAreaScaling>True</UseRoomAreaScaling>
+            <UseRoomAreaLighting>True</UseRoomAreaLighting>
+            <TurnBeforeWalking>True</TurnBeforeWalking>
+            <DiagonalLoops>True</DiagonalLoops>
+            <AdjustSpeedWithScaling>False</AdjustSpeedWithScaling>
+            <AdjustVolumeWithScaling>False</AdjustVolumeWithScaling>
+            <MovementLinkedToAnimation>True</MovementLinkedToAnimation>
+            <Properties />
+            <Interactions>
+              <Event Index="0" />
+              <Event Index="1">cRaposinha_Interact</Event>
+              <Event Index="2" />
+              <Event Index="3" />
+              <Event Index="4" />
+              <Event Index="5" />
+              <Event Index="6" />
+              <Event Index="7" />
+            </Interactions>
+          </Character>
         </Characters>
       </CharacterFolder>
     </Characters>
@@ -2462,12 +2520,19 @@ return
 @4
 Sensei: O que você gostaria de saber?
 goto-dialog 3
-return
 
 @5
+Sensei: Tenho uma última missão para você..
+Sensei: Eu não estou achando a minha raposinha Foxy.
+Sensei: Você poderia procurá-la e trezê-la para mim.
+return
+
+@6
 Sensei: Vá descansar um pouco.
 Sensei: E prepare-se para o treinamento que começará em breve..
 stop
+
+
 ]]></Script>
                 <DialogOptions>
                   <DialogOption>
@@ -2496,6 +2561,12 @@ stop
                   </DialogOption>
                   <DialogOption>
                     <ID>5</ID>
+                    <Text xml:space="preserve">Mas algum pedido?</Text>
+                    <Show>True</Show>
+                    <Say>True</Say>
+                  </DialogOption>
+                  <DialogOption>
+                    <ID>6</ID>
                     <Text xml:space="preserve">Até logo Sensei.</Text>
                     <Show>True</Show>
                     <Say>True</Say>
@@ -2538,7 +2609,7 @@ return
 Sensei: É melhor você arrumar um lugar para dormir.
 Sensei: Ainda teremos muito tempo para histórias..
 goto-dialog 2
-return
+
 ]]></Script>
                 <DialogOptions>
                   <DialogOption>
@@ -2600,6 +2671,16 @@ Sensei: E uma Espada
 Sensei: Se conseguir eu o treinarei!
 Gabe: Perfeito! Eu vou conseguir.
 stop
+]]></Script>
+            <DialogOptions />
+          </Dialog>
+          <Dialog>
+            <ID>4</ID>
+            <Name>dVendedor</Name>
+            <ShowTextParser>False</ShowTextParser>
+            <Script><![CDATA[// Dialog script file
+@S  // Dialog startup entry point
+return
 ]]></Script>
             <DialogOptions />
           </Dialog>
@@ -3024,6 +3105,21 @@ stop
           <Name>dialogCount</Name>
           <Type>int</Type>
           <DefaultValue>0</DefaultValue>
+        </GlobalVariable>
+        <GlobalVariable>
+          <Name>entrouNaCasa</Name>
+          <Type>int</Type>
+          <DefaultValue>0</DefaultValue>
+        </GlobalVariable>
+        <GlobalVariable>
+          <Name>raposaCutScene</Name>
+          <Type>int</Type>
+          <DefaultValue>0</DefaultValue>
+        </GlobalVariable>
+        <GlobalVariable>
+          <Name>quest</Name>
+          <Type>String</Type>
+          <DefaultValue />
         </GlobalVariable>
       </Variables>
     </GlobalVariables>
@@ -3648,6 +3744,18 @@ stop
                   </Sprite>
                 </Sprites>
               </SpriteFolder>
+              <SpriteFolder Name="raposa">
+                <SubFolders />
+                <Sprites>
+                  <Sprite Slot="42" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="43" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="44" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="45" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="46" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="47" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                  <Sprite Slot="48" Width="24" Height="24" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
+                </Sprites>
+              </SpriteFolder>
             </SubFolders>
             <Sprites>
               <Sprite Slot="2040" Width="14" Height="14" ColorDepth="32" Resolution="LowRes" AlphaChannel="False" />
@@ -4184,6 +4292,267 @@ stop
               </View>
             </Views>
           </ViewFolder>
+          <ViewFolder Name="Raposinha">
+            <SubFolders />
+            <Views>
+              <View>
+                <ID>8</ID>
+                <Name>vRaposinhaMove</Name>
+                <Loops>
+                  <Loop>
+                    <ID>0</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>42</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>1</ID>
+                        <Image>43</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>2</ID>
+                        <Image>44</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>3</ID>
+                        <Image>45</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>4</ID>
+                        <Image>46</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>5</ID>
+                        <Image>47</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>1</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>42</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>1</ID>
+                        <Image>43</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>2</ID>
+                        <Image>44</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>3</ID>
+                        <Image>45</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>4</ID>
+                        <Image>46</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>5</ID>
+                        <Image>47</Image>
+                        <Flipped>True</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>2</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>42</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>1</ID>
+                        <Image>43</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>2</ID>
+                        <Image>44</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>3</ID>
+                        <Image>45</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>4</ID>
+                        <Image>46</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>5</ID>
+                        <Image>47</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>3</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>42</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>1</ID>
+                        <Image>43</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>2</ID>
+                        <Image>44</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>3</ID>
+                        <Image>45</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>4</ID>
+                        <Image>46</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                      <ViewFrame>
+                        <ID>5</ID>
+                        <Image>47</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                </Loops>
+              </View>
+              <View>
+                <ID>9</ID>
+                <Name>vRaposinhaIdle</Name>
+                <Loops>
+                  <Loop>
+                    <ID>0</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>48</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>1</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>48</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>2</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>48</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                  <Loop>
+                    <ID>3</ID>
+                    <RunNextLoop>False</RunNextLoop>
+                    <Frames>
+                      <ViewFrame>
+                        <ID>0</ID>
+                        <Image>48</Image>
+                        <Flipped>False</Flipped>
+                        <Delay>0</Delay>
+                        <Sound>0</Sound>
+                      </ViewFrame>
+                    </Frames>
+                  </Loop>
+                </Loops>
+              </View>
+            </Views>
+          </ViewFolder>
         </SubFolders>
         <Views />
       </ViewFolder>
@@ -4257,8 +4626,8 @@ See KeyboardMovement.txt for details.
             <SubFolders />
             <AudioClips>
               <AudioClip>
-                <ScriptName>aCelestial</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\Celestial.mp3</SourceFileName>
+                <ScriptName>aCelestial</ScriptName>
                 <Index>1</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4266,11 +4635,11 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-06 23:17:16Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:42Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aFoggy_Woods</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\Foggy Woods.mp3</SourceFileName>
+                <ScriptName>aFoggy_Woods</ScriptName>
                 <Index>2</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4278,11 +4647,11 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-22 17:47:45Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:43Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aNocturnal_Mysteries</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\Nocturnal Mysteries.mp3</SourceFileName>
+                <ScriptName>aNocturnal_Mysteries</ScriptName>
                 <Index>3</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4290,11 +4659,11 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-18 22:28:01Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:43Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aRed_Carpet_Wooden_Floor</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\Red Carpet Wooden Floor.mp3</SourceFileName>
+                <ScriptName>aRed_Carpet_Wooden_Floor</ScriptName>
                 <Index>4</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4302,11 +4671,11 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-23 06:41:40Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:43Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aThe_Arrival__BATTLE_II_</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\The Arrival (BATTLE II).mp3</SourceFileName>
+                <ScriptName>aThe_Arrival__BATTLE_II_</ScriptName>
                 <Index>5</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4314,11 +4683,11 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-05 23:51:22Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:43Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aWindless_Slopes</ScriptName>
                 <SourceFileName xml:space="preserve">C:\Users\bakud\Dropbox\JAMs &amp; Cowork\RPG simple framework\03 export\rpg-pack\soundtrack\Windless Slopes.mp3</SourceFileName>
+                <ScriptName>aWindless_Slopes</ScriptName>
                 <Index>6</Index>
                 <Type>2</Type>
                 <BundlingType>InSeparateVOX</BundlingType>
@@ -4326,7 +4695,7 @@ See KeyboardMovement.txt for details.
                 <DefaultVolume>-1</DefaultVolume>
                 <DefaultPriority>Inherit</DefaultPriority>
                 <DefaultRepeat>Inherit</DefaultRepeat>
-                <FileLastModifiedDate>2018-02-23 06:04:47Z</FileLastModifiedDate>
+                <FileLastModifiedDate>2019-04-08 10:31:43Z</FileLastModifiedDate>
               </AudioClip>
             </AudioClips>
             <AudioClipFolder>
@@ -4341,8 +4710,8 @@ See KeyboardMovement.txt for details.
             <SubFolders />
             <AudioClips>
               <AudioClip>
-                <ScriptName>aItem</ScriptName>
                 <SourceFileName>assets/Audio/sfx/item.ogg</SourceFileName>
+                <ScriptName>aItem</ScriptName>
                 <Index>7</Index>
                 <Type>3</Type>
                 <BundlingType>InGameEXE</BundlingType>
@@ -4353,8 +4722,8 @@ See KeyboardMovement.txt for details.
                 <FileLastModifiedDate>2018-06-05 17:26:40Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aDoorOpen</ScriptName>
                 <SourceFileName>assets/Audio/sfx/doorOpen_2.wav</SourceFileName>
+                <ScriptName>aDoorOpen</ScriptName>
                 <Index>8</Index>
                 <Type>3</Type>
                 <BundlingType>InGameEXE</BundlingType>
@@ -4365,8 +4734,8 @@ See KeyboardMovement.txt for details.
                 <FileLastModifiedDate>2018-12-16 15:15:02Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aBauOpen</ScriptName>
                 <SourceFileName>assets/Audio/sfx/bauOpen.ogg</SourceFileName>
+                <ScriptName>aBauOpen</ScriptName>
                 <Index>9</Index>
                 <Type>3</Type>
                 <BundlingType>InGameEXE</BundlingType>
@@ -4377,8 +4746,8 @@ See KeyboardMovement.txt for details.
                 <FileLastModifiedDate>2014-03-17 13:02:34Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aSplash</ScriptName>
                 <SourceFileName>assets/Audio/sfx/splash.ogg</SourceFileName>
+                <ScriptName>aSplash</ScriptName>
                 <Index>10</Index>
                 <Type>3</Type>
                 <BundlingType>InGameEXE</BundlingType>
@@ -4389,8 +4758,8 @@ See KeyboardMovement.txt for details.
                 <FileLastModifiedDate>2018-10-18 15:40:46Z</FileLastModifiedDate>
               </AudioClip>
               <AudioClip>
-                <ScriptName>aTitleJogar</ScriptName>
                 <SourceFileName>assets/Audio/sfx/titleJogar.wav</SourceFileName>
+                <ScriptName>aTitleJogar</ScriptName>
                 <Index>11</Index>
                 <Type>3</Type>
                 <BundlingType>InGameEXE</BundlingType>
@@ -4422,24 +4791,24 @@ See KeyboardMovement.txt for details.
     </AudioClips>
     <AudioClipTypes>
       <AudioClipType>
-        <Name xml:space="preserve">Ambient Sound</Name>
         <TypeID>1</TypeID>
+        <Name xml:space="preserve">Ambient Sound</Name>
         <MaxChannels>1</MaxChannels>
         <VolumeReductionWhileSpeechPlaying>0</VolumeReductionWhileSpeechPlaying>
         <CrossfadeClips>No</CrossfadeClips>
         <BackwardsCompatibilityType>True</BackwardsCompatibilityType>
       </AudioClipType>
       <AudioClipType>
-        <Name>Music</Name>
         <TypeID>2</TypeID>
+        <Name>Music</Name>
         <MaxChannels>1</MaxChannels>
         <VolumeReductionWhileSpeechPlaying>30</VolumeReductionWhileSpeechPlaying>
         <CrossfadeClips>No</CrossfadeClips>
         <BackwardsCompatibilityType>True</BackwardsCompatibilityType>
       </AudioClipType>
       <AudioClipType>
-        <Name>Sound</Name>
         <TypeID>3</TypeID>
+        <Name>Sound</Name>
         <MaxChannels>0</MaxChannels>
         <VolumeReductionWhileSpeechPlaying>0</VolumeReductionWhileSpeechPlaying>
         <CrossfadeClips>No</CrossfadeClips>
